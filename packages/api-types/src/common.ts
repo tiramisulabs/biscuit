@@ -1,27 +1,3 @@
-/** https://discord.com/developers/docs/resources/user#user-object-premium-types */
-export enum PremiumTypes {
-	None,
-	NitroClassic,
-	Nitro,
-}
-
-/** https://discord.com/developers/docs/resources/user#user-object-user-flags */
-export enum UserFlags {
-	DiscordEmployee = 1 << 0,
-	PartneredServerOwner = 1 << 1,
-	HypeSquadEventsMember = 1 << 2,
-	BugHunterLevel1 = 1 << 3,
-	HouseBravery = 1 << 6,
-	HouseBrilliance = 1 << 7,
-	HouseBalance = 1 << 8,
-	EarlySupporter = 1 << 9,
-	TeamUser = 1 << 10,
-	BugHunterLevel2 = 1 << 14,
-	VerifiedBot = 1 << 16,
-	EarlyVerifiedBotDeveloper = 1 << 17,
-	DiscordCertifiedModerator = 1 << 18,
-	BotHttpInteractions = 1 << 19,
-}
 
 /** https://discord.com/developers/docs/resources/channel#channels-resource */
 export enum ChannelFlags {
@@ -47,38 +23,6 @@ export enum VisibilityTypes {
 export enum TeamMembershipStates {
 	Invited = 1,
 	Accepted,
-}
-
-/** https://discord.com/developers/docs/topics/oauth2#application-application-flags */
-export enum ApplicationFlags {
-	/** Intent required for bots in **100 or more servers** to receive [`presence_update` events](#DOCS_TOPICS_GATEWAY/presence-update) */
-	GatewayPresence = 1 << 12,
-	/** Intent required for bots in under 100 servers to receive [`presence_update` events](#DOCS_TOPICS_GATEWAY/presence-update), found in Bot Settings */
-	GatewayPresenceLimited = 1 << 13,
-	/** Intent required for bots in **100 or more servers** to receive member-related events like `guild_member_add`. See list of member-related events [under `GUILD_MEMBERS`](#DOCS_TOPICS_GATEWAY/list-of-intents) */
-	GatewayGuildMembers = 1 << 14,
-	/** Intent required for bots in under 100 servers to receive member-related events like `guild_member_add`, found in Bot Settings. See list of member-related events [under `GUILD_MEMBERS`](#DOCS_TOPICS_GATEWAY/list-of-intents) */
-	GatewayGuildMembersLimited = 1 << 15,
-	/** Indicates unusual growth of an app that prevents verification */
-	VerificationPendingGuildLimit = 1 << 16,
-	/** Indicates if an app is embedded within the Discord client (currently unavailable publicly) */
-	Embedded = 1 << 17,
-	/** Intent required for bots in **100 or more servers** to receive [message content](https://support-dev.discord.com/hc/en-us/articles/4404772028055) */
-	GatewayMessageCount = 1 << 18,
-	/** Intent required for bots in under 100 servers to receive [message content](https://support-dev.discord.com/hc/en-us/articles/4404772028055), found in Bot Settings */
-	GatewayMessageContentLimited = 1 << 19,
-}
-
-/** https://discord.com/developers/docs/interactions/message-components#component-types */
-export enum MessageComponentTypes {
-	/** A container for other components */
-	ActionRow = 1,
-	/** A button object */
-	Button = 2,
-	/** A select menu for picking from choices */
-	SelectMenu = 3,
-	/** A text input object */
-	InputText = 4,
 }
 
 export enum TextStyles {
@@ -1050,24 +994,6 @@ export const Intents = GatewayIntents;
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export type Intents = GatewayIntents;
 
-/** https://discord.com/developers/docs/interactions/slash-commands#interaction-response-interactionresponsetype */
-export enum InteractionResponseTypes {
-	/** ACK a `Ping` */
-	Pong = 1,
-	/** Respond to an interaction with a message */
-	ChannelMessageWithSource = 4,
-	/** ACK an interaction and edit a response later, the user sees a loading state */
-	DeferredChannelMessageWithSource = 5,
-	/** For components, ACK an interaction and edit the original message later; the user does not see a loading state */
-	DeferredUpdateMessage = 6,
-	/** For components, edit the message the component was attached to */
-	UpdateMessage = 7,
-	/** For Application Command Options, send an autocomplete result */
-	ApplicationCommandAutocompleteResult = 8,
-	/** For Command or Component interactions, send a Modal response */
-	Modal = 9,
-}
-
 export enum Errors {
 	// Bot Role errors
 	BOTS_HIGHEST_ROLE_TOO_LOW = 'BOTS_HIGHEST_ROLE_TOO_LOW',
@@ -1276,12 +1202,6 @@ export type Camelize<T> = {
 		: never;
 };
 
-export type PickPartial<T, K extends keyof T> = {
-	[P in keyof T]?: T[P] | undefined;
-} & { [P in K]: T[P] };
-
 export type OmitFirstFnArg<F> = F extends (x: any, ...args: infer P) => infer R
 	? (...args: P) => R
 	: never;
-
-export type Snowflake = string;
