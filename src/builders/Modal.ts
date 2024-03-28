@@ -47,6 +47,16 @@ export class Modal<T extends ModalBuilderComponents = TextInput> {
 	}
 
 	/**
+	 * Set the components to the modal.
+	 * @param component - The components to set into the modal.
+	 * @returns The current Modal instance.
+	 */
+	setComponents(component: ActionRow<T>[]): this {
+		this.components = [...component];
+		return this;
+	}
+
+	/**
 	 * Sets the title of the modal.
 	 * @param title - The title of the modal.
 	 * @returns The current Modal instance.
